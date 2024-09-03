@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo:7
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_DATABASE: pokedex-db
+      MONGO_INITDB_ROOT_USERNAME: bsquiroz
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+    volumes: 
+      - ./mongo-data:/data/db
