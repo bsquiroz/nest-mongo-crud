@@ -3,19 +3,23 @@ import { PokemonResponse } from './interfaces/poke-response.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { Pokemon } from '../pokemon/entities/pokemon.entity';
 import { Model } from 'mongoose';
+import { FetchAdapter } from 'src/common/adapters/fetch.adapter';
 
 @Injectable()
 export class SeedService {
   constructor(
     @InjectModel(Pokemon.name)
     private readonly pokemonModel: Model<Pokemon>,
+
+    private readonly http: FetchAdapter,
   ) {}
 
   async executeSeed() {
     await this.pokemonModel.deleteMany();
 
-    const data = await fetch('https://pokeapi.co/api/v2/pokemon?limit=650');
-    const res: PokemonResponse = await data.json();
+    const res = await this.http.get<PokemonResponse>(
+      'https://pokeapi.co/api/v2/pokemon?limit=650',
+    );
 
     // await this.insertWayOne(res);
     // await this.insertWayTwo(res);

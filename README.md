@@ -17,7 +17,13 @@ pnpm install
 docker-compose up -d
 ```
 
-4. Stack usado
+4. Contruir la data
+
+```bash
+http://localhost:3000/api/seed
+```
+
+## Stack usado
 
 - Nest
 - MongoDB
