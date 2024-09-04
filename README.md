@@ -17,7 +17,24 @@ pnpm install
 docker-compose up -d
 ```
 
-4. Contruir la data
+4. Cambiar el .env.example por el .env con las respectivas variables de entorno
+
+### ejemplo
+
+```
+NODE_ENV=dev
+MONGO_DB_URI=url
+PORT=3000
+DEFAULT_LIMIT=1
+```
+
+5. Levantar la app
+
+```
+pnpm run start:dev
+```
+
+6. Contruir la data
 
 ```bash
 http://localhost:3000/api/seed
