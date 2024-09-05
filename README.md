@@ -8,7 +8,7 @@
 2. Ejecutar el
 
 ```bash
-pnpm install
+yarn install
 ```
 
 3. Levantar la base de datos
@@ -31,7 +31,7 @@ DEFAULT_LIMIT=1
 5. Levantar la app
 
 ```
-pnpm run start:dev
+yarn run start:dev
 ```
 
 6. Contruir la data
@@ -40,7 +40,29 @@ pnpm run start:dev
 http://localhost:3000/api/seed
 ```
 
+# Dockerizar la APP
+
+## Build
+
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
+## Run
+
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up
+```
+
+## Nota
+
+Por defecto, **docker-compose** usa el archivo `.env`, por lo que si tienen el archivo .env y lo configuran con sus variables de entorno de producción, bastaría con
+
+```
+docker-compose -f docker-compose.prod.yaml up --build
+
 ## Stack usado
 
 - Nest
 - MongoDB
+```
